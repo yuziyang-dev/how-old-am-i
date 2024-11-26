@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Old Am I Calculator | Calculate Your Age - ShutEye</title>
+    <meta name="description" content="Calculate your exact age and discover personalized sleep recommendations for your age group. Learn how proper sleep can help you stay younger and healthier.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <div class="page-wrapper">
+        <header class="header">
+            <div class="header-content">
+                <a href="https://shuteye.ai" class="logo">
+                    <img src="logo.webp" alt="ShutEye Icon" class="logo-icon">
+                    <img src="ShutEye.webp" alt="ShutEye" class="logo-text">
+                </a>
+                <a href="https://shuteye.ai/download" class="download-button">Download</a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="hero-section">
+                <h1>How Old Am I?</h1>
+                <p class="subtitle">Calculate your exact age and get personalized sleep recommendations</p>
+            </div>
+
+            <div class="calculator-section">
+                <div class="calculator-card">
+                    <div class="card-content">
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label>Enter your birth date</label>
+                                <div class="date-inputs">
+                                    <input type="text" id="year" placeholder="YYYY" maxlength="4" required>
+                                    <input type="text" id="month" placeholder="MM" maxlength="2" required>
+                                    <input type="text" id="day" placeholder="DD" maxlength="2" required>
+                                </div>
+                            </div>
+                            <button class="calculate-button" onclick="calculateAge()">
+                                Calculate Age
+                            </button>
+                        </div>
+
+                        <div id="result" class="result-section hidden">
+                            <div class="result-grid">
+                                <div class="result-item">
+                                    <div class="result-label">Your Age</div>
+                                    <div id="age-display" class="result-value"></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Days Until Birthday</div>
+                                    <div id="birthday-countdown" class="result-value"></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Your Zodiac Sign</div>
+                                    <div id="zodiac-display" class="result-value"></div>
+                                    <div id="zodiac-energy" class="result-description"></div>
+                                </div>
+                                <div class="result-item">
+                                    <div class="result-label">Your Sleep Recommendations</div>
+                                    <div id="sleep-recommendation" class="result-value"></div>
+                                    <div id="energy-advice" class="result-description"></div>
+                                </div>
+                            </div>
+
+                            <div class="sleep-info-grid">
+                                <div class="info-card">
+                                    <div class="info-icon">🌙</div>
+                                    <h3>Sleep Cycle Stages</h3>
+                                    <ul class="info-list">
+                                        <li>Light Sleep (45-55%): Memory formation, learning</li>
+                                        <li>Deep Sleep (15-25%): Physical recovery, immune system</li>
+                                        <li>REM Sleep (20-25%): Dream state, emotional processing</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-card">
+                                    <div class="info-icon">⏰</div>
+                                    <h3>Best Sleep Schedule</h3>
+                                    <ul class="info-list">
+                                        <li>Go to bed at the same time daily</li>
+                                        <li>Wake up naturally without an alarm</li>
+                                        <li>Maintain schedule on weekends</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-card">
+                                    <div class="info-icon">🌿</div>
+                                    <h3>Sleep Environment</h3>
+                                    <ul class="info-list">
+                                        <li>Temperature: 65-68°F (18-20°C)</li>
+                                        <li>Dark room with minimal noise</li>
+                                        <li>Clean, comfortable bedding</li>
+                                    </ul>
+                                </div>
+
+                                <div class="info-card">
+                                    <div class="info-icon">❌</div>
+                                    <h3>What to Avoid</h3>
+                                    <ul class="info-list">
+                                        <li>Caffeine 6 hours before bed</li>
+                                        <li>Blue light from devices</li>
+                                        <li>Large meals close to bedtime</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="sleep-facts">
+                                <div class="fact-header">
+                                    <h2>Did You Know?</h2>
+                                    <p>Interesting facts about sleep and health</p>
+                                </div>
+                                <div class="facts-grid">
+                                    <div class="fact-item">
+                                        <div class="fact-icon">🌙</div>
+                                        <div class="fact-content">
+                                            <h3>1/3</h3>
+                                            <p>of your life is spent sleeping</p>
+                                        </div>
+                                    </div>
+                                    <div class="fact-item">
+                                        <div class="fact-icon">⚡️</div>
+                                        <div class="fact-content">
+                                            <h3>90%</h3>
+                                            <p>of people use their phones before bed</p>
+                                        </div>
+                                    </div>
+                                    <div class="fact-item">
+                                        <div class="fact-icon">⏰</div>
+                                        <div class="fact-content">
+                                            <h3>15-20</h3>
+                                            <p>minutes to fall asleep naturally</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cta-section">
+                                <h3>Track Your Sleep with ShutEye</h3>
+                                <p>Get personalized sleep insights and recommendations</p>
+                                <div class="store-buttons">
+                                    <a href="https://apps.apple.com/us/app/shuteye-sleep-tracker-sounds/id1537998134" class="store-button">
+                                        <img src="App-store.svg" alt="Download on App Store">
+                                    </a>
+                                    <a href="https://play.google.com/store/apps/details?id=com.shuteye.sleep" class="store-button">
+                                        <img src="Google-play.svg" alt="Get it on Google Play">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p> 2024 ShutEye. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
